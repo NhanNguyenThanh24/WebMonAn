@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - FoodWare</title>
+    <link rel="icon" href="FoodWare.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('FoodBackgroundNomeat.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .register-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+
+        .register-container img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .register-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .register-container input {
+            width: calc(100% - 24px); /* Điều chỉnh width và trừ đi padding */
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Thêm box-sizing */
+        }
+
+        .register-container button {
+            background-color: #1e5242;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%; /* Sửa width từ 427px thành 100% */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+            box-sizing: border-box; /* Thêm box-sizing */
+        }
+
+        .register-container button:hover {
+            background-color: #16432f;
+        }
+
+        .register-container .links {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .register-container a {
+            text-decoration: none;
+            color: #1e5242;
+            font-weight: bold;
+        }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <img src="FoodWare.png" alt="Logo FoodWare">
+        <h2>Đăng ký tài khoản</h2>
+        <form>
+            <input type="text" placeholder="Họ và tên" required>
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Tên đăng nhập" required>
+            <input type="password" placeholder="Mật khẩu" required>
+            <input type="password" placeholder="Xác nhận mật khẩu" required>
+            <button type="submit">Đăng ký</button>
+        </form>
+        <div class="links">
+            <a href="logincook.html">Đã có tài khoản? Đăng nhập ngay</a>
+        </div>
+    </div>
+</body>
+</html>
