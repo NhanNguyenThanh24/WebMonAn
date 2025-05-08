@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Bảng Xếp Hạng - FoodWare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('../HomePage/background.avif');
+            color: #2d3436;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            background: url('chef.jpg') center/cover;
+            margin-bottom: 40px;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 150px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Thêm style cho nút quay về */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #1b3c3d;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background-color: #1b3c3d;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #636e72;
+            font-size: 1.1em;
+        }
+
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #1b3c3d;
+            outline: none;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background: #f5f7fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tag:hover {
+            background: #1b3c3d;
+            color: white;
+            border-color: #1b3c3d;
+        }
+
+        .tag.active {
+            background: #1b3c3d;
+            color: white;
+            border-color: #1b3c3d;
+        }
+
+        .ranking-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .ranking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .rank {
+            font-size: 2em;
+            font-weight: 700;
+            color: #1b3c3d;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .chef-info {
+            flex: 1;
+        }
+
+        .chef-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .chef-stats {
+            display: flex;
+            gap: 20px;
+            color: #636e72;
+            font-size: 0.95em;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .score {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1b3c3d;
+            padding: 10px 20px;
+            background: #f5f7fa;
+            border-radius: 8px;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: white;
+        }
+
+        .gold {
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+        }
+
+        .silver {
+            background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+        }
+
+        .bronze {
+            background: linear-gradient(135deg, #CD7F32, #8B4513);
+        }
+        .footer {
+            background-color: #1b3c3d;
+            color: white;
+            padding: 25px 20px;
+            margin: 40px 40px 0 40px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-section {
+            padding: 0 10px;
+        }
+
+        .footer-section h3 {
+            color: #a8e6cf;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .footer-section p {
+            margin: 8px 0;
+            line-height: 1.5;
+            font-size: 1em;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #a8e6cf;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            padding: 8px 15px;
+            border: 1px solid #fff;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #fff;
+            color: #1b3c3d;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+
+        @media (max-width: 768px) {
+            .chef-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .ranking-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .score {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../HomePage/trangchu.html" class="back-button"><i class="fa-solid fa-arrow-left"></i> trang chủ</a>
+
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1>🏆 Bảng Xếp Hạng Đầu Bếp</h1>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="filters">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Tìm kiếm đầu bếp...">
+            </div>
+            <div class="filter-tags">
+                <span class="tag active">Tất cả</span>
+                <span class="tag">Món Việt</span>
+                <span class="tag">Món Á</span>
+                <span class="tag">Món Âu</span>
+                <span class="tag">Món chay</span>
+                <span class="tag">Đồ uống</span>
+            </div>
+        </div>
+
+        <div class="rankings">
+            <div class="ranking-card">
+                <div class="rank">1</div>
+                <div class="chef-info">
+                    <div class="chef-name">Nguyễn Văn An</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 150 công thức</div>
+                        <div class="stat">⭐ 4.9/5 đánh giá</div>
+                        <div class="stat">❤️ 2.5k lượt thích</div>
+                        <span class="badge gold">Đầu Bếp Vàng</span>
+                    </div>
+                </div>
+                <div class="score">100.0</div>
+            </div>
+
+            <div class="ranking-card">
+                <div class="rank">2</div>
+                <div class="chef-info">
+                    <div class="chef-name">Trần Thị Bình</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 120 công thức</div>
+                        <div class="stat">⭐ 4.8/5 đánh giá</div>
+                        <div class="stat">❤️ 2.1k lượt thích</div>
+                        <span class="badge silver">Đầu Bếp Bạc</span>
+                    </div>
+                </div>
+                <div class="score">95.5</div>
+            </div>
+
+            <div class="ranking-card">
+                <div class="rank">3</div>
+                <div class="chef-info">
+                    <div class="chef-name">Lê Văn Cường</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 95 công thức</div>
+                        <div class="stat">⭐ 4.7/5 đánh giá</div>
+                        <div class="stat">❤️ 1.8k lượt thích</div>
+                        <span class="badge bronze">Đầu Bếp Đồng</span>
+                    </div>
+                </div>
+                <div class="score">90.2</div>
+            </div>
+            <div class="ranking-card">
+                <div class="rank">4</div>
+                <div class="chef-info">
+                    <div class="chef-name">Lê Văn Việt</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 60 công thức</div>
+                        <div class="stat">⭐ 4.7/5 đánh giá</div>
+                        <div class="stat">❤️ 1.6k lượt thích</div>
+                    </div>
+                </div>
+                <div class="score">89.1</div>
+            </div>
+            <div class="ranking-card">
+                <div class="rank">5</div>
+                <div class="chef-info">
+                    <div class="chef-name">Nguyễn Đăng Khoa</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 75 công thức</div>
+                        <div class="stat">⭐ 4.6/5 đánh giá</div>
+                        <div class="stat">❤️ 1.6k lượt thích</div>
+                    </div>
+                </div>
+                <div class="score">88.3</div>
+            </div>
+            <div class="ranking-card">
+                <div class="rank">6</div>
+                <div class="chef-info">
+                    <div class="chef-name">Kiều Hai Mẫn</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 55 công thức</div>
+                        <div class="stat">⭐ 4.7/5 đánh giá</div>
+                        <div class="stat">❤️ 1.3k lượt thích</div>
+                    </div>
+                </div>
+                <div class="score">87.9</div>
+            </div>
+            <div class="ranking-card">
+                <div class="rank">7</div>
+                <div class="chef-info">
+                    <div class="chef-name">Lê Văn Cường</div>
+                    <div class="chef-stats">
+                        <div class="stat">📚 63 công thức</div>
+                        <div class="stat">⭐ 4.6/5 đánh giá</div>
+                        <div class="stat">❤️ 1.2k lượt thích</div>
+                    </div>
+                </div>
+                <div class="score">87</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về FoodWare</h3>
+                <p>Nơi chia sẻ đam mê nấu ăn và kết nối cộng đồng yêu ẩm thực</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>📧 Email: <a href="mailto:contact@foodware.com">contact@foodware.com</a></p>
+                <p>📞 Hotline: <a href="tel:+84123456789">+84 123 456 789</a></p>
+                <p>📍 Địa chỉ: 123 Nguyễn Văn Thoại, TP.Đà Nẵng</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social-links">
+                    <a href="FoodWare" target="_blank">Facebook</a>
+                    <a href="FoodWare" target="_blank">Instagram</a>
+                    <a href="FoodWare" target="_blank">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FoodWare - All rights reserved</p>
+        </div>
+    </div>
+</body>
+</html>
