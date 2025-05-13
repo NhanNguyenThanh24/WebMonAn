@@ -8,22 +8,25 @@
     <link rel="icon" href="../HomePage/FoodWare.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        body{
+        body {
             background-image: url('background.avif');
         }
+
         .carousel-item img {
             height: 500px;
             object-fit: cover;
         }
+
         .carousel-item {
-            transition: transform 0.3s ease-in-out;  
+            transition: transform 0.35s ease-in-out;
         }
 
         .carousel-fade .carousel-item {
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;    
+            transition: opacity 0.3s ease-in-out;
         }
 
         .carousel-item-next,
@@ -55,16 +58,27 @@
         .carousel-caption h3 {
             color: white;
             margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
         }
 
         .carousel-caption p {
             color: #f0f0f0;
+            font-family: 'Playfair Display', serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        h1 {
+            color: #1b3c3d;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
         }
 
         body {
@@ -127,11 +141,11 @@
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.3);  /* Thay đổi từ white sang màu trắng trong suốt */
+            background-color: rgba(255, 255, 255, 0.85);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8px);  /* Thêm hiệu ứng làm mờ background */
+            backdrop-filter: blur(8px);
         }
 
         .about-section {
@@ -139,24 +153,31 @@
         }
 
         h1 {
-            color: white;
+            color: #1b3c3d;
             margin-bottom: 30px;
             text-align: center;
-            font-size: 2.5em;
+            font-size: 3.0em;
+            font-weight: bold;
         }
 
         .about-section h2 {
-            color: white;
+            color: #1b3c3d;
             margin-bottom: 20px;
             font-size: 1.8em;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+            font-weight: bold;
         }
 
         .about-section p {
             line-height: 1.6;
             margin-bottom: 15px;
             font-size: 1.1em;
-            color: white;
+            color: #1b3c3d;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
+
 
         .features {
             display: grid;
@@ -193,7 +214,7 @@
         }
 
         .separator {
-            width: 100%;  
+            width: 100%;
             height: 1px;
             background-color: #e0e0e0;
             margin: 20px 0;
@@ -218,6 +239,7 @@
             <li><a href="../HomePage/trangchu.html">Trang chủ</a></li>
             <li><a href="about.html">Giới thiệu</a></li>
             <li><a href="../HomePage/trangchu.html#footer">Liên hệ</a></li>
+            <li><a href="ranking.html">Bảng Xếp Hạng</a></li>
         </ul>
     </div>
 
@@ -241,11 +263,15 @@
 
             <div class="about-section">
                 <h2>Tính năng nổi bật</h2>
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -270,29 +296,36 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">Trước</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">Sau</span>
                     </button>
                 </div>
             </div>
-            
+
 
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-                const myCarousel = document.querySelector('#carouselExampleCaptions');
-        const carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 3000,    
-            wrap: true,        // Cho phép quay vòng
-            ride: 'carousel'   // Tự động chạy
+   <!-- Cập nhật script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const myCarousel = document.querySelector('#carouselExampleCaptions');
+        new bootstrap.Carousel(myCarousel, {
+            interval: 2500,    // Thời gian chuyển ảnh: 3 giây
+            ride: true,        // Bật chế độ tự động chạy
+            wrap: true,        // Cho phép chạy vòng lặp
+            touch: true        // Cho phép vuốt trên thiết bị cảm ứng
         });
-    </script>
+    });
+</script>
 
 </body>
 
