@@ -2,862 +2,175 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <title>Trang chủ - FoodWare</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
-    <link rel="icon" href="FoodWare.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            background-image: url('background.avif');
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .contain {
-            display: flex;
-        }
-
-        .separator {
-            width: 100%;
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 20px 0;
-        }
-
-        .category.active {
-            background-color: #1b3c3d;
-        }
-
-        .category.active a {
-            color: white;
-        }
-
-        .nav-menu {
-            margin-top: 95px;
-            list-style: none;
-            padding: 0 15px;
-        }
-
-
-        .nav-menu li {
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: block;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-
-
-        .nav-menu li:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
-        }
-
-        .sidebar {
-            width: 260px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #1b3c3d;
-            overflow-y: auto;
-            color: white;
-            z-index: 1100;
-            transition: width 0.3s ease;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 260px;
-            right: 0;
-            height: 65px;
-            background-color: #1b3c3d;
-            z-index: 1000;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            transition: left 0.3s ease;
-        }
-
-        /* Remove duplicate .sidebar and .header definitions */
-        .main-content {
-            margin-left: 260px;
-            /* Match sidebar width */
-            min-height: 100vh;
-            position: relative;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 260px;
-            /* Match sidebar width */
-            right: 0;
-            background-color: #1b3c3d;
-            z-index: 1000;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-        }
-
-        input {
-            height: 38px;
-            width: 300px;
-            border-radius: 10px;
-            font-size: 17px;
-            font-family: 'Poppins', Arial;
-            margin-right: auto;
-            padding-left: 10px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            border: 2px solid white;
-            color: white;
-            margin-left: 10px;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background-color: white;
-            color: #1b3c3d;
-        }
-
-        .content {
-            margin-top: -25px;
-            max-width: 100%;
-            /* Changed from 1200px to 100% */
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0;
-            /* Removed padding */
-            padding-top: 80px;
-        }
-
-
-        .banner-container {
-            position: relative;
-            width: 100%;
-            margin: 20px 0 40px 0;
-            overflow: hidden;
-            transition: width 0.3s ease;
-        }
-
-        .main-content.expanded .banner-container {
-            width: 100%;
-        }
-
-        .banner {
-            width: 100%;
-            height: 600px;
-            display: block;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: zoomEffect 20s infinite alternate;
-        }
-
-        .banner-text {
-            color: white;
-            font-size: 5.5em;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            animation: textFade 7s ease-in-out infinite;
-            width: 100%;
-            margin: 0;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-        }
-
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-
-        .sidebar {
-            width: 260px;
-            transition: width 0.3s ease;
-        }
-
-        .sidebar.collapsed {
-            width: 60px;
-        }
-
-        .sidebar.collapsed .nav-menu li a {
-            display: none;
-        }
-
-        .header img.logo {
-            height: 95px;
-            /* Adjusted height to fit header */
-            width: 95px;
-            /* Maintain aspect ratio */
-            margin-right: 20px;
-        }
-
-        .sidebar-toggle {
-            position: absolute;
-            right: 10px;
-            top: 20px;
-            /* Adjusted for better positioning */
-            color: white;
-            cursor: pointer;
-            font-size: 28px;
-            /* Slightly larger icon */
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: 0.3s;
-            z-index: 1200;
-            /* Ensure toggle button stays on top */
-        }
-
-        .sidebar-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .main-content {
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.expanded {
-            margin-left: 60px;
-        }
-
-        .header {
-            transition: left 0.3s ease;
-        }
-
-        .header.expanded {
-            left: 60px;
-        }
-
-        @keyframes textFade {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            15% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            85% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-        }
-
-
-        @keyframes zoomEffect {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.1);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .banner:hover {
-            transform: scale(1.005);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        h2 {
-            margin-top: 30px;
-            /* Reduced from 50px */
-            text-align: center;
-            color: #1b3c3d;
-        }
-
-
-        .categories {
-            display: flex;
-            gap: 0;
-            justify-content: stretch;
-            margin: 30px 0;
-            padding: 0;
-            width: 100%;
-            max-width: none;
-        }
-
-
-        .category {
-            background-color: #fff9f0;
-            flex: 1;
-            height: 300px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0;
-            box-shadow: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .categories,
-        .recipe-list {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease;
-        }
-
-        .categories.show,
-        .recipe-list.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .category:first-child {
-            border-radius: 0;
-        }
-
-        .category:last-child {
-            border-radius: 0;
-        }
-
-        .category img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.3s ease;
-            filter: brightness(0.85);
-        }
-
-        .category a {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
-            font-size: 1.8em;
-            /* Slightly reduced for new height */
-            font-weight: 600;
-            background: rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-
-        .category:hover {
-            transform: translateY(-5px);
-            border-color: #1b3c3d;
-            background-color: #1b3c3d;
-            color: white;
-        }
-
-        .category:hover {
-            transform: translateY(-5px);
-        }
-
-        .category:hover img {
-            transform: scale(1.1);
-        }
-
-        .category:hover a {
-            background: rgba(27, 60, 61, 0.8);
-        }
-
-
-
-        .recipe-list {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .recipe {
-            margin-bottom: 40px;
-        }
-
-        .recipe-content {
-            display: flex;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            height: 300px;
-            /* Thêm chiều cao cố định */
-        }
-
-        .recipe.reverse .recipe-content {
-            flex-direction: row-reverse;
-        }
-
-        .recipe-info {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 500px;
-            /* Thêm chiều rộng cố định */
-        }
-
-
-
-
-        .recipe-image {
-            flex: 1;
-            position: relative;
-            width: 500px;
-            /* Thêm chiều rộng cố định */
-        }
-
-        .recipe-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .recipe-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            /* Đảm bảo ảnh được căn giữa */
-        }
-
-        .recipe-author {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .recipe-info h3 {
-            font-size: 1.8em;
-            margin: 10px 0;
-            color: #1b3c3d;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(27, 60, 61, 0.1);
-        }
-
-        .recipe-desc {
-            color: #666;
-            line-height: 1.6;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .recipe-content {
-                flex-direction: column;
-            }
-
-            .recipe.reverse .recipe-content {
-                flex-direction: column;
-            }
-
-            .recipe-image {
-                height: 300px;
-            }
-        }
-
-
-        .footer {
-            background-color: #1b3c3d;
-            color: white;
-            padding: 25px 20px;
-            margin: 40px 40px 0 40px;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .footer-section {
-            padding: 0 10px;
-        }
-
-        .footer-section h3 {
-            color: #a8e6cf;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .footer-section p {
-            margin: 8px 0;
-            line-height: 1.5;
-            font-size: 1em;
-        }
-
-        .footer-section a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #a8e6cf;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            padding: 8px 15px;
-            border: 1px solid #fff;
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: #fff;
-            color: #1b3c3d;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 30px 0;
-        }
-
-        .pagination a {
-            padding: 8px 16px;
-            background-color: #1b3c3d;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .pagination a:hover,
-        .pagination a.active {
-            background-color: #2c5c5d;
-        }
-
-        hr {
-            border: 0;
-            height: 3px;
-            background-image: linear-gradient(to right, rgba(135, 206, 235, 0), rgba(135, 206, 235, 0.9), rgba(135, 206, 235, 0));
-            margin: 40px 100px;
-            margin-top: 65px;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="trangchu.js" defer></script>
+    <title></title>
 </head>
 
 <body>
-    <div class="sidebar collapsed" id="sidebar">
-        <div class="sidebar-toggle" onclick="toggleSidebar()">
-            <span>≡</span>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#">FoodWare</a></div>
+            <ul class="links">
+                <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+                <li><a href="vietmonmoi.html">Viết món mới</a></li>
+                <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
-        <ul class="nav-menu">
-            <li><a href="trangchu.html">Trang chủ</a></li>
-            <li><a href="../Login/about.html">Giới thiệu</a></li>
-            <li><a href="../Login/ranking.html">Bảng Xếp Hạng</a></li>
-            <li><a href="#footer">Liên hệ</a></li>
-        </ul>
+
+        <div class="dropdown_menu">
+            <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+            <li><a href="vietmonmoi.html">Viết món mới</a></li>
+            <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+            <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+        </div>
+
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>CHÀO MỪNG ĐẾN VỚI FOODWARE</h1>
+            <p>
+                Nơi chia sẻ công thức </br> Gắn kết đam mê ẩm thực!
+            </p>
+        </section>
+<div class="backgr">
+
+        <!-- Featured Categories -->
+        <section class="featured-categories">
+            <h2>Khám phá món ăn</h2>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm món ăn...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="images/VietnamFood2.webp" alt="Món Việt">
+                    <div class="category-content">
+                        <h3>Món Việt Nam</h3>
+                        <p>Khám phá hương vị truyền thống</p>
+                        <a href="monviet.html" class="explore-btn">Khám phá</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="images/monau.webp" alt="Món Âu">
+                    <div class="category-content">
+                        <h3>Món Âu</h3>
+                        <p>Trải nghiệm ẩm thực phương Tây</p>
+                        <a href="monau.html" class="explore-btn">Khám phá</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="images/douong.jpg" alt="Đồ uống">
+                    <div class="category-content">
+                        <h3>Đồ uống</h3>
+                        <p>Thức uống độc đáo mọi phong cách</p>
+                        <a href="douong.html" class="explore-btn">Khám phá</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+      
+        <!-- Featured Recipes Section -->
+        <section class="featured-recipes">
+            <h2>Công thức nổi bật</h2>
+            <div class="recipe-list">
+                <!-- Phở bò -->
+                <div class="recipe">
+                    <div class="recipe-content">
+                        <div class="recipe-info">
+                            <div class="recipe-author">
+                                <img src="images/author.jpg" alt="Chef" class="author-avatar">
+                                <span>Đầu bếp Minh Nhân</span>
+                            </div>
+                            <h3>Phở bò - Hương vị truyền thống</h3>
+                            <p class="recipe-desc">Món ăn truyền thống với nước dùng đậm đà, bánh phở mềm dai và thịt bò
+                                thơm ngon...</p>
+                            <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                        </div>
+                        <div class="recipe-image">
+                            <img src="images/pho.webp" alt="Phở bò">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other recipes... -->
+                <div class="recipe">
+                    <div class="recipe-content">
+                        <div class="recipe-image">
+                            <img src="images/banhmi.jpg" alt="Bánh mì">
+                        </div>
+                        <div class="recipe-info">
+                            <div class="recipe-author">
+                                <img src="images/ava2.jpg" alt="Chef" class="author-avatar">
+                                <span>Chef Minh Nhật</span>
+                            </div>
+                            <h3>Bánh mì - Món ngon đường phố</h3>
+                            <p class="recipe-desc">Bánh mì giòn rụm với nhân thịt và rau củ tươi ngon, một món ăn đường
+                                phố độc đáo của Việt Nam...</p>
+                            <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <div class="header expanded">
-        <img src="FoodWare.png" class="logo">
-        <input type="text" placeholder="Tìm tên món hay nguyên liệu">
-        <a class="button" href="vietmonmoi.html">Viết món mới</a>
-        <a class="button" href="../Login/logincook.html">Đăng nhập</a>
-    </div>
-
-    <div class="main-content expanded">
-        <div class="content">
-            <div class="banner-container">
-                <img src="FoodWare-Banner.jpg" alt="FoodWare Banner" class="banner">
-                <div class="banner-overlay">
-                    <h1 class="banner-text">Chào mừng đến với FoodWare</h1>
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Bắt đầu hành trình ẩm thực của bạn</h2>
+                <p>Tham gia cộng đồng FoodWare để chia sẻ và khám phá những công thức tuyệt vời</p>
+                <div class="cta-buttons">
+                    <a href="../Login/register.html" class="cta-btn primary">Đăng ký ngay</a>
+                    <a href="../Login/gioithieu.html" class="cta-btn secondary">Tìm hiểu thêm</a>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <h2
-                style="margin-top: 50px; text-align: center; color: white; font-size: 2.5em; font-family: 'Quicksand', sans-serif;">
-                Danh mục món ăn</h2>
-            <div class="categories">
-                <div class="category">
-                    <img src="VietnamFood2.webp" alt="Món Việt">
-                    <a href="monviet.html" data-category="monviet" style="font-family: 'Playwrite AU SA', serif;">Món ăn
-                        Việt Nam</a>
-
-                </div>
-                <div class="category">
-                    <img src="monau.webp" alt="Món Âu">
-                    <a href="monau.html" data-category="monau" style="font-family: 'Playwrite AU SA', serif;">Món Âu</a>
-                </div>
-                <div class="category">
-                    <img src="douong.jpg" alt="Đồ uống">
-                    <a href="douong.html" data-category="douong" style="font-family: 'Playwrite AU SA', serif;">Đồ
-                        uống</a>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về FoodWare</h3>
+                <p>Nền tảng chia sẻ công thức nấu ăn hàng đầu Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Email: contact@foodware.com</p>
+                <p>Điện thoại: (84) 123-456-789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-        <hr class="section-divider">
-
-        <h2 class="popular-recipes" style="font-family: 'Quicksand', sans-serif; font-size: 2.5em; color: white;">Công
-            thức nổi bật</h2>
-
-        <div class="recipe-list">
-            <!-- Phở bò: ảnh bên phải, chữ bên trái -->
-            <div class="recipe">
-                <div class="recipe-content">
-                    <div class="recipe-info">
-                        <div class="recipe-author">
-                            <img src="background.avif" alt="Chef" class="author-avatar">
-                            <span>Nhân thích nấu ăn</span>
-                        </div>
-                        <h3>Phở bò - Hương vị truyền thống</h3>
-                        <p class="recipe-desc">Món ăn truyền thống với nước dùng đậm đà, bánh phở mềm dai và thịt bò
-                            thơm ngon. Tô phở nóng hổi còn được điểm xuyết bởi hành lá xanh mướt, lát hành tây trắng
-                            mỏng, thêm chút tương ớt, chanh và rau thơm tạo nên hương vị hài hòa khó cưỡng...</p>
-                    </div>
-                    <div class="recipe-image">
-                        <img src="pho.webp" alt="Phở bò">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bánh mì: ảnh bên trái, chữ bên phải -->
-            <div class="recipe">
-                <div class="recipe-content">
-                    <div class="recipe-image">
-                        <img src="banhmi.jpg" alt="Bánh mì">
-                    </div>
-                    <div class="recipe-info">
-                        <div class="recipe-author">
-                            <img src="background.avif" alt="Chef" class="author-avatar">
-                            <span>Chef Minh Nhật</span>
-                        </div>
-                        <h3>Bánh mì - Món ngon đường phố</h3>
-                        <p class="recipe-desc">Bánh mì giòn rụm với nhân thịt và rau củ tươi ngon, một món ăn đường phố
-                            độc đáo của Việt Nam. Bên trong lớp vỏ bánh mì nóng giòn là sự kết hợp hài hòa giữa pate béo
-                            ngậy, thịt nguội đậm đà, dưa leo giòn mát, cà rốt ngâm chua ngọt và rau mùi thơm lừng..</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bún chả: ảnh bên phải, chữ bên trái -->
-            <div class="recipe">
-                <div class="recipe-content">
-                    <div class="recipe-info">
-                        <div class="recipe-author">
-                            <img src="background.avif" alt="Chef" class="author-avatar">
-                            <span>Nhân thích nấu ăn</span>
-                        </div>
-                        <h3>Bún chả - Món ngon Hà Nội</h3>
-                        <p class="recipe-desc">Bún chả với thịt nướng thơm lừng, nước mắm chua ngọt và rau sống tươi
-                            mát. Từng miếng chả viên và thịt ba chỉ nướng vàng ruộm được tẩm ướp đậm đà, nướng trên than
-                            hồng dậy mùi quyến rũ...</p>
-                    </div>
-                    <div class="recipe-image">
-                        <img src="buncha.webp" alt="Bún chả">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Spaghetti: ảnh bên trái, chữ bên phải -->
-            <!-- Matcha: ảnh bên trái, chữ bên phải -->
-            <div class="recipe">
-                <div class="recipe-content">
-                    <div class="recipe-image">
-                        <img src="matcha.jpg" alt="Matcha">
-                    </div>
-                    <div class="recipe-info">
-                        <div class="recipe-author">
-                            <img src="background.avif" alt="Chef" class="author-avatar">
-                            <span>Chef Anna</span>
-                        </div>
-                        <h3>Matcha Latte</h3>
-                        <p class="recipe-desc">Thức uống Nhật Bản với hương vị đậm đà của bột trà xanh matcha, kết hợp
-                            cùng sữa tươi béo ngậy tạo nên lớp bọt mịn màng. Matcha latte không chỉ là thức uống mà còn
-                            là nghệ thuật pha chế tinh tế...</p>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FoodWare. All rights reserved.</p>
         </div>
-
-        <div class="pagination">
-            <a href="#" class="active">1</a>
-            <a href="trangchu2.html">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">&raquo;</a>
-        </div>
-
-
-        <div class="footer" id="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Về FoodWare</h3>
-                    <p>Nơi chia sẻ đam mê nấu ăn và kết nối cộng đồng yêu ẩm thực</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Liên hệ</h3>
-                    <p>📧 Email: <a href="mailto:contact@foodware.com">contact@foodware.com</a></p>
-                    <p>📞 Hotline: <a href="tel:+84123456789">+84 123 456 789</a></p>
-                    <p>📍 Địa chỉ: 123 Nguyễn Văn Thoại, TP.Đà Nẵng</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Theo dõi chúng tôi</h3>
-                    <div class="social-links">
-                        <a href="FoodWare" target="_blank">Facebook</a>
-                        <a href="FoodWare" target="_blank">Instagram</a>
-                        <a href="FoodWare" target="_blank">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 FoodWare - All rights reserved</p>
-            </div>
-        </div>
-        <script>
-
-        </script>
-    </div>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const header = document.querySelector('.header');
-
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
-            header.classList.toggle('expanded');
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            const categoryLinks = document.querySelectorAll('.category a');
-            const recipes = document.querySelectorAll('.recipe');
-
-            categoryLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const category = this.getAttribute('data-category');
-
-                    recipes.forEach(recipe => {
-                        if (category === 'all' || recipe.getAttribute('data-category') === category) {
-                            recipe.style.display = 'block';
-                        } else {
-                            recipe.style.display = 'none';
-                        }
-                    });
-
-                    // Đánh dấu category đang được chọn
-                    categoryLinks.forEach(link => link.parentElement.classList.remove('active'));
-                    this.parentElement.classList.add('active');
-                });
-            });
-        });
-
-
-        function reveal() {
-            var reveals = document.querySelectorAll('.categories, .recipe-list');
-
-            reveals.forEach(element => {
-                var windowHeight = window.innerHeight;
-                var elementTop = element.getBoundingClientRect().top;
-                var elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('show');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', reveal);
-        reveal(); // Trigger on initial load
-    </script>
+    </footer>
 </body>
 
 </html>

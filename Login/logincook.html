@@ -1,99 +1,242 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - FoodWare</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="FoodWare.png" type="image/x-icon">
-
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('FoodBackgroundNomeat.jpg');
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/FoodBackgroundNomeat.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
+            padding: 20px;
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
-            margin: 0 20px;
-        }
-        .login-container img {
-            width: 120px; 
-            margin-bottom: 20px;
-        }
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 24px;
-        }
-        .login-container input {
-            width: calc(100% - 24px);
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #f9f9f9;
-            box-sizing: border-box;
+            text-align: center;
         }
 
-        .login-container button {
-            background-color: #1e5242;
+        .login-container img {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .login-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .login-container h2 {
+            color: #1e5242;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            border-color: #1e5242;
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(30, 82, 66, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #1e5242;
             color: white;
             border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 10px;
             font-size: 16px;
-            transition: background 0.3s ease;
-            margin-top: 10px;
-            box-sizing: border-box;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .login-container button:hover {
-            background-color: #16432f;
+
+        .login-btn:hover {
+            background: #163d31;
+            transform: translateY(-2px);
         }
-        .login-container .links {
-            margin-top: 15px;
-            font-size: 14px;
+
+        .login-btn:active {
+            transform: translateY(0);
         }
-        .login-container a {
-            text-decoration: none;
+
+        .divider {
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
             color: #1e5242;
-            font-weight: bold;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
         }
-        .login-container a:hover {
+
+        .links a:hover {
+            color: #163d31;
             text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .login-container h2 {
+                font-size: 24px;
+            }
+
+            .form-group input {
+                padding: 12px 12px 12px 40px;
+            }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #1b3c3d;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background-color: #1b3c3d;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
+
 <body>
-   
+
+    <a href="javascript:void(0)" onclick="history.back()" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại
+    </a>
     <div class="login-container">
-        <img src="FoodWare.png" alt="Logo FoodWare"> 
+        <img src="images/FoodWare.png" alt="Logo FoodWare">
         <h2>Đăng nhập</h2>
         <form>
-            <input type="text" placeholder="Tên đăng nhập" required>
-            <input type="password" placeholder="Mật khẩu" required>
-            <button type="submit">Đăng nhập</button>
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="remember-forgot">
+                <label class="remember-me">
+                    <input type="checkbox">
+                    <span>Ghi nhớ đăng nhập</span>
+                </label>
+                <a href="quenMK.html">Quên mật khẩu?</a>
+            </div>
+            <button type="submit" class="login-btn">Đăng nhập</button>
+            <div class="divider">hoặc</div>
+            <div class="links">
+                <p>Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+            </div>
         </form>
-        <div class="links">
-            <a href="quenMK.html">Quên mật khẩu?</a> | <a href="register.html">Tạo tài khoản mới</a>
-        </div>
     </div>
 </body>
+
 </html>

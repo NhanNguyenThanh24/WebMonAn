@@ -4,103 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký - FoodWare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="FoodWare.png" type="image/x-icon">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('FoodBackgroundNomeat.jpg');
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/FoodBackgroundNomeat.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
+            padding: 20px;
         }
 
         .register-container {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
-            margin: 0 20px;
+            text-align: center;
         }
 
         .register-container img {
             width: 120px;
-            margin-bottom: 20px;
+            height: auto;
+            display: block;
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .register-container img:hover {
+            transform: scale(1.05);
         }
 
         .register-container h2 {
+            color: #1e5242;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
             margin-bottom: 20px;
-            color: #333;
-            font-size: 24px;
+            position: relative;
         }
 
-        .register-container input {
-            width: calc(100% - 24px); /* Điều chỉnh width và trừ đi padding */
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 16px;
-            background-color: #f9f9f9;
-            box-sizing: border-box; /* Thêm box-sizing */
+            transition: all 0.3s ease;
+            background: #f8f9fa;
         }
 
-        .register-container button {
-            background-color: #1e5242;
+        .form-group input:focus {
+            border-color: #1e5242;
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(30, 82, 66, 0.1);
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 15px;
+            background: #1e5242;
             color: white;
             border: none;
-            padding: 12px;
-            width: 100%; /* Sửa width từ 427px thành 100% */
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 10px;
             font-size: 16px;
-            transition: background 0.3s ease;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
             margin-top: 10px;
-            box-sizing: border-box; /* Thêm box-sizing */
         }
 
-        .register-container button:hover {
-            background-color: #16432f;
+        .register-btn:hover {
+            background: #163d31;
+            transform: translateY(-2px);
         }
 
-        .register-container .links {
-            margin-top: 15px;
-            font-size: 14px;
+        .register-btn:active {
+            transform: translateY(0);
         }
 
-        .register-container a {
-            text-decoration: none;
+        .divider {
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
             color: #1e5242;
-            font-weight: bold;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        .register-container a:hover {
+        .links a:hover {
+            color: #163d31;
             text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 30px 20px;
+            }
+
+            .register-container h2 {
+                font-size: 24px;
+            }
+
+            .form-group input {
+                padding: 12px 12px 12px 40px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="register-container">
-        <img src="FoodWare.png" alt="Logo FoodWare">
+        <img src="images/FoodWare.png" alt="Logo FoodWare">
         <h2>Đăng ký tài khoản</h2>
         <form>
-            <input type="text" placeholder="Họ và tên" required>
-            <input type="email" placeholder="Email" required>
-            <input type="text" placeholder="Tên đăng nhập" required>
-            <input type="password" placeholder="Mật khẩu" required>
-            <input type="password" placeholder="Xác nhận mật khẩu" required>
-            <button type="submit">Đăng ký</button>
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Họ và tên" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Xác nhận mật khẩu" required>
+            </div>
+            <button type="submit" class="register-btn">Đăng ký</button>
+            <div class="divider">hoặc</div>
+            <div class="links">
+                <a href="logincook.html">Đã có tài khoản? Đăng nhập ngay</a>
+            </div>
         </form>
-        <div class="links">
-            <a href="logincook.html">Đã có tài khoản? Đăng nhập ngay</a>
-        </div>
     </div>
 </body>
 </html>
