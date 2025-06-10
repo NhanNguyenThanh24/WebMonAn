@@ -9,7 +9,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
     <script src="trangchu.js" defer></script>
-    <title></title>
+    <title>Trang Chủ</title>
 </head>
 
 <body>
@@ -44,95 +44,98 @@
                 Nơi chia sẻ công thức </br> Gắn kết đam mê ẩm thực!
             </p>
         </section>
-<div class="backgr">
+        <div class="backgr">
 
-        <!-- Featured Categories -->
-        <section class="featured-categories">
-            <h2>Khám phá món ăn</h2>
+            <!-- Featured Categories -->
+            <section class="featured-categories">
+                <h2>Khám phá món ăn</h2>
 
-            <div class="search-container">
-                <div class="search-box">
-                    <input type="text" placeholder="Tìm kiếm món ăn...">
-                    <button type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="images/VietnamFood2.webp" alt="Món Việt">
-                    <div class="category-content">
-                        <h3>Món Việt Nam</h3>
-                        <p>Khám phá hương vị truyền thống</p>
-                        <a href="monviet.html" class="explore-btn">Khám phá</a>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm món ăn..." autocomplete="off">
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="suggestions-box" id="suggestionsBox"></div>
                     </div>
                 </div>
-                <div class="category-card">
-                    <img src="images/monau.webp" alt="Món Âu">
-                    <div class="category-content">
-                        <h3>Món Âu</h3>
-                        <p>Trải nghiệm ẩm thực phương Tây</p>
-                        <a href="monau.html" class="explore-btn">Khám phá</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="images/douong.jpg" alt="Đồ uống">
-                    <div class="category-content">
-                        <h3>Đồ uống</h3>
-                        <p>Thức uống độc đáo mọi phong cách</p>
-                        <a href="douong.html" class="explore-btn">Khám phá</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        </section>
 
-      
-        <!-- Featured Recipes Section -->
-        <section class="featured-recipes">
-            <h2>Công thức nổi bật</h2>
-            <div class="recipe-list">
-                <!-- Phở bò -->
-                <div class="recipe">
-                    <div class="recipe-content">
-                        <div class="recipe-info">
-                            <div class="recipe-author">
-                                <img src="images/author.jpg" alt="Chef" class="author-avatar">
-                                <span>Đầu bếp Minh Nhân</span>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="images/VietnamFood2.webp" alt="Món Việt">
+                        <div class="category-content">
+                            <h3>Món Việt Nam</h3>
+                            <p>Khám phá hương vị truyền thống</p>
+                            <a href="monviet.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/monau.webp" alt="Món Âu">
+                        <div class="category-content">
+                            <h3>Món Âu</h3>
+                            <p>Trải nghiệm ẩm thực phương Tây</p>
+                            <a href="monau.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/douong.jpg" alt="Đồ uống">
+                        <div class="category-content">
+                            <h3>Đồ uống</h3>
+                            <p>Thức uống độc đáo mọi phong cách</p>
+                            <a href="douong.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </section>
+
+
+            <!-- Featured Recipes Section -->
+            <section class="featured-recipes">
+                <h2>Công thức nổi bật</h2>
+                <div class="recipe-list">
+                    <!-- Phở bò -->
+                    <div class="recipe">
+                        <div class="recipe-content">
+                            <div class="recipe-info">
+                                <div class="recipe-author">
+                                    <img src="images/author.jpg" alt="Chef" class="author-avatar">
+                                    <span>Đầu bếp Minh Nhân</span>
+                                </div>
+                                <h3>Phở bò - Hương vị truyền thống</h3>
+                                <p class="recipe-desc">Món ăn truyền thống với nước dùng đậm đà, bánh phở mềm dai và
+                                    thịt bò
+                                    thơm ngon...</p>
+                                <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
                             </div>
-                            <h3>Phở bò - Hương vị truyền thống</h3>
-                            <p class="recipe-desc">Món ăn truyền thống với nước dùng đậm đà, bánh phở mềm dai và thịt bò
-                                thơm ngon...</p>
-                            <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
-                        </div>
-                        <div class="recipe-image">
-                            <img src="images/pho.webp" alt="Phở bò">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other recipes... -->
-                <div class="recipe">
-                    <div class="recipe-content">
-                        <div class="recipe-image">
-                            <img src="images/banhmi.jpg" alt="Bánh mì">
-                        </div>
-                        <div class="recipe-info">
-                            <div class="recipe-author">
-                                <img src="images/ava2.jpg" alt="Chef" class="author-avatar">
-                                <span>Chef Minh Nhật</span>
+                            <div class="recipe-image">
+                                <img src="images/pho.webp" alt="Phở bò">
                             </div>
-                            <h3>Bánh mì - Món ngon đường phố</h3>
-                            <p class="recipe-desc">Bánh mì giòn rụm với nhân thịt và rau củ tươi ngon, một món ăn đường
-                                phố độc đáo của Việt Nam...</p>
-                            <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                        </div>
+                    </div>
+
+                    <!-- Other recipes... -->
+                    <div class="recipe">
+                        <div class="recipe-content">
+                            <div class="recipe-image">
+                                <img src="images/banhmi.jpg" alt="Bánh mì">
+                            </div>
+                            <div class="recipe-info">
+                                <div class="recipe-author">
+                                    <img src="images/ava2.jpg" alt="Chef" class="author-avatar">
+                                    <span>Chef Minh Nhật</span>
+                                </div>
+                                <h3>Bánh mì - Món ngon đường phố</h3>
+                                <p class="recipe-desc">Bánh mì giòn rụm với nhân thịt và rau củ tươi ngon, một món ăn
+                                    đường
+                                    phố độc đáo của Việt Nam...</p>
+                                <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
 
         <!-- Call to Action -->
         <section class="cta-section">
