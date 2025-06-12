@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Viết món mới - FoodWare</title>
+    <link rel="stylesheet" href="vietmonmoi.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="trangchu.html">FoodWare</a></div>
+            <ul class="links">
+                <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+                <li><a href="vietmonmoi.html">Viết món mới</a></li>
+                <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+            <li><a href="vietmonmoi.html">Viết món mới</a></li>
+            <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+            <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+        </div>
+
+    </header>
+
+        <main>
+        <div class="container mt-5">
+            <div class="form-container mx-auto p-4 rounded shadow">
+                <h1 class="text-center mb-4 form-title fs-1">Viết món mới</h1>
+                
+                <div class="form-group mb-4">
+                    <label class="form-label fw-semibold fs-3">Tên món ăn</label>
+                    <input type="text" class="form-control form-control-lg" id="tenmonan" placeholder="Nhập tên món ăn">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label fw-semibold">Nguyên liệu</label>
+                    <textarea class="form-control" id="nguyenlieu" rows="5" 
+                        placeholder="Liệt kê các nguyên liệu cần thiết"></textarea>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label fw-semibold">Các bước chế biến</label>
+                    <textarea class="form-control" id="chebien" rows="8" 
+                        placeholder="Mô tả chi tiết các bước thực hiện"></textarea>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label fw-semibold">Hình ảnh món ăn</label>
+                    <div class="upload-area">
+                        <div class="upload-preview">
+                            <img id="preview" src="#" alt="Preview" class="d-none">
+                            <div class="upload-placeholder">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Kéo thả ảnh vào đây hoặc click để chọn</p>
+                            </div>
+                        </div>
+                        <input type="file" class="upload-input" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn-success btn-lg px-5 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>Đăng bài
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-4">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về FoodWare</h3>
+                <p>Nền tảng chia sẻ công thức nấu ăn hàng đầu Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Email: contact@foodware.com</p>
+                <p>Điện thoại: (84) 123-456-789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FoodWare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+
+        <script>
+        const toggleBtn = document.querySelector('.toggle_btn');
+        const toggleBtnIcon = document.querySelector('.toggle_btn i');
+        const dropDownMenu = document.querySelector('.dropdown_menu');
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open');
+
+            const isOpen = dropDownMenu.classList.contains('open');
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars';
+        }
+    </script>
+
+    <script>
+        const uploadPreview = document.querySelector('.upload-preview');
+        const uploadInput = document.querySelector('.upload-input');
+        const uploadPlaceholder = document.querySelector('.upload-placeholder p');
+
+        uploadPreview.addEventListener('click', () => {
+            uploadInput.click();
+        });
+
+        uploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                uploadPlaceholder.innerHTML = `<i class="fas fa-file-image"></i><br>${fileName}`;
+            }
+        });
+    </script>
+    
+    
+</body>
+
+</html>
