@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="trangchu.js" defer></script>
+    <title>Trang Chủ</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#">FoodWare</a></div>
+            <ul class="links">
+                <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+                <li><a href="vietmonmoi.html">Viết món mới</a></li>
+                <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="../Login/logincook.html">Đăng nhập</a></li>
+            <li><a href="vietmonmoi.html">Viết món mới</a></li>
+            <li><a href="../Login/gioithieu.html">Giới thiệu</a></li>
+            <li><a href="../Login/ranking.html">Bảng xếp hạng</a></li>
+        </div>
+
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>CHÀO MỪNG ĐẾN VỚI FOODWARE</h1>
+            <p>
+                Nơi chia sẻ công thức </br> Gắn kết đam mê ẩm thực!
+            </p>
+        </section>
+        <div class="backgr">
+
+            <!-- Featured Categories -->
+            <section class="featured-categories">
+                <h2>Khám phá món ăn</h2>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm món ăn..." autocomplete="off">
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="suggestions-box" id="suggestionsBox"></div>
+                    </div>
+                </div>
+
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="images/VietnamFood2.webp" alt="Món Việt">
+                        <div class="category-content">
+                            <h3>Món Việt Nam</h3>
+                            <p>Khám phá hương vị truyền thống</p>
+                            <a href="monviet.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/monau.webp" alt="Món Âu">
+                        <div class="category-content">
+                            <h3>Món Âu</h3>
+                            <p>Trải nghiệm ẩm thực phương Tây</p>
+                            <a href="monau.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/douong.jpg" alt="Đồ uống">
+                        <div class="category-content">
+                            <h3>Đồ uống</h3>
+                            <p>Thức uống độc đáo mọi phong cách</p>
+                            <a href="douong.html" class="explore-btn">Khám phá</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </section>
+
+
+            <!-- Featured Recipes Section -->
+            <section class="featured-recipes">
+                <h2>Công thức nổi bật</h2>
+                <div class="recipe-list">
+                    <!-- Phở bò -->
+                    <div class="recipe">
+                        <div class="recipe-content">
+                            <div class="recipe-info">
+                                <div class="recipe-author">
+                                    <img src="images/author.jpg" alt="Chef" class="author-avatar">
+                                    <span>Đầu bếp Minh Nhân</span>
+                                </div>
+                                <h3>Phở bò - Hương vị truyền thống</h3>
+                                <p class="recipe-desc">Món ăn truyền thống với nước dùng đậm đà, bánh phở mềm dai và
+                                    thịt bò
+                                    thơm ngon...</p>
+                                <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                            </div>
+                            <div class="recipe-image">
+                                <img src="images/pho.webp" alt="Phở bò">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other recipes... -->
+                    <div class="recipe">
+                        <div class="recipe-content">
+                            <div class="recipe-image">
+                                <img src="images/banhmi.jpg" alt="Bánh mì">
+                            </div>
+                            <div class="recipe-info">
+                                <div class="recipe-author">
+                                    <img src="images/ava2.jpg" alt="Chef" class="author-avatar">
+                                    <span>Chef Minh Nhật</span>
+                                </div>
+                                <h3>Bánh mì - Món ngon đường phố</h3>
+                                <p class="recipe-desc">Bánh mì giòn rụm với nhân thịt và rau củ tươi ngon, một món ăn
+                                    đường
+                                    phố độc đáo của Việt Nam...</p>
+                                <a href="recipe-detail.html" class="recipe-link">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Bắt đầu hành trình ẩm thực của bạn</h2>
+                <p>Tham gia cộng đồng FoodWare để chia sẻ và khám phá những công thức tuyệt vời</p>
+                <div class="cta-buttons">
+                    <a href="../Login/register.html" class="cta-btn primary">Đăng ký ngay</a>
+                    <a href="../Login/gioithieu.html" class="cta-btn secondary">Tìm hiểu thêm</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về FoodWare</h3>
+                <p>Nền tảng chia sẻ công thức nấu ăn hàng đầu Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Email: contact@foodware.com</p>
+                <p>Điện thoại: (84) 123-456-789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FoodWare. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
